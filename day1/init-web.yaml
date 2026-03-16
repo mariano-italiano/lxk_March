@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-web
+spec:
+  initContainers:
+  - name: download
+    image: alpine
+    command: ['sh', '-c', 'apk update; apk add git; git clone -b develop https://github.com/mariano-italiano/lxk_March.git /app; echo "Git repo cloned and index.html donwloaded" ']
+    volumeMounts:
+    - name: app-data
+      mountPath: /app
+  containers:
+  - name: web
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: app-data
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: app-data
+    emptyDir: {}
