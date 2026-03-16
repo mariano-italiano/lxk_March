@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-web
+spec:
+  containers:
+  - image: httpd
+    name: web1
+  - name: web2
+    image: nginx
