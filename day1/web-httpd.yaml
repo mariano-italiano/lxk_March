@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: web-httpd
+  name: web-httpd
+spec:
+  containers:
+  - image: httpd
+    name: web-httpd
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
