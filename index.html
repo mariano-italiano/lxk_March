@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kubernetes Colorful Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#326ce5,#6dd5fa,#a8ff78);
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
+    min-height:100vh;
+    color:white;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+header{
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+nav button{
+    background:rgba(255,255,255,0.2);
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav button:hover{
+    background:rgba(255,255,255,0.4);
+    transform:scale(1.05);
+}
+
+#content{
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+    background:rgba(0,0,0,0.25);
+    border-radius:15px;
+    backdrop-filter:blur(6px);
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:10px;
+    margin:10px 0;
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    padding:15px;
+    opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+☸ Kubernetes Colorful Portal
+</header>
+
+<nav id="menu"></nav>
+
+<div id="content"></div>
+
+<div class="footer">
+Built with Kubernetes inspiration ☸
+</div>
+
+<script>
+
+const pages = {
+
+home: `
+<h2>Welcome</h2>
+<div class="card">
+Kubernetes is an open-source platform designed to automate deploying,
+scaling, and operating application containers.
+</div>
+<div class="card">
+Use the dynamic menu above to explore different Kubernetes concepts.
+</div>
+`,
+
+pods: `
+<h2>Pods</h2>
+<div class="card">
+Pods are the smallest deployable units in Kubernetes.
+A Pod can contain one or multiple containers that share networking and storage.
+</div>
+`,
+
+deployments: `
+<h2>Deployments</h2>
+<div class="card">
+Deployments manage ReplicaSets and provide declarative updates to applications.
+</div>
+<div class="card">
+You can scale, rollback, and update containerized apps safely.
+</div>
+`,
+
+services: `
+<h2>Services</h2>
+<div class="card">
+A Service exposes a set of Pods as a network service.
+</div>
+<div class="card">
+Types include ClusterIP, NodePort, and LoadBalancer.
+</div>
+`,
+
+about: `
+<h2>About</h2>
+<div class="card">
+This is a single-file dynamic Kubernetes themed website.
+Menu and pages are generated dynamically with JavaScript.
+</div>
+`
+};
+
+
+const menu = document.getElementById("menu");
+const content = document.getElementById("content");
+
+
+function loadPage(page){
+    content.innerHTML = pages[page];
+}
+
+
+function buildMenu(){
+    Object.keys(pages).forEach(page=>{
+        const btn=document.createElement("button");
+        btn.textContent=page.charAt(0).toUpperCase()+page.slice(1);
+        btn.onclick=()=>loadPage(page);
+        menu.appendChild(btn);
+    });
+}
+
+buildMenu();
+loadPage("home");
+
+</script>
+
+</body>
+</html>
