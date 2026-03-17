@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: test-dns
+  name: test-dns
+spec:
+  containers:
+  - image: nicolaka/netshoot
+    name: test-dns
+    command: ['sh', '-c', 'nslookup kubernetes; sleep 3600']
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

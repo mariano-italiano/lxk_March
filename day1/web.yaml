@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web-init
+  name: web-httpd
+spec:
+  initContainers:
+  - name: svc-check
+    image: nicolaka/netshoot 
+    command: ['sh', '-c', 'until nslookup web-svc; do echo waiting for service web-svc to start; sleep 2; done']
+  containers:
+  - image: httpd
+    name: web-httpd
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
