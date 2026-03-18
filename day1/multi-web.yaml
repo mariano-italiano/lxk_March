@@ -7,4 +7,5 @@ spec:
   - image: httpd
     name: web1
   - name: web2
-    image: nginx
+    image: busybox
+    command: ['sh', '-c' ,'sleep 1d']

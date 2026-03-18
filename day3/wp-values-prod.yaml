@@ -1,0 +1,17 @@
+
+wordpressUsername: marcin
+wordpressPassword: "securepass123"
+
+replicaCount: 2
+updateStrategy:
+  type: RollingUpdate
+
+service:
+  type: NodePort
+  ports:
+    http: 80
+    https: 443
+  httpsTargetPort: https
+  nodePorts:
+    http: "30081"
+    https: "30443"

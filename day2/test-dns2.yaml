@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: test-dns2
+  name: test-dns2
+spec:
+  containers:
+  - image: nginx
+    name: nginx

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Świat Samochodów</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        text-align: center;
+        background: #111;
+        color: white;
+    }
+
+    header {
+        background: #222;
+        padding: 20px;
+        font-size: 30px;
+    }
+
+    .car {
+        font-size: 80px;
+        margin: 30px;
+        transition: transform 0.5s;
+    }
+
+    .move {
+        transform: translateX(200px);
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        background: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>🚗 Świat Samochodów</header>
+
+<div class="car" id="car">🚘</div>
+
+<h2>Prędkość: <span id="speed">0</span> km/h</h2>
+
+<button onclick="accelerate()">Gaz!</button>
+<button onclick="brake()">Hamuj!</button>
+
+<script>
+let speed = 0;
+
+function accelerate() {
+    speed += 10;
+    document.getElementById("speed").innerText = speed;
+
+    const car = document.getElementById("car");
+    car.classList.add("move");
+
+    setTimeout(() => {
+        car.classList.remove("move");
+    }, 500);
+}
+
+function brake() {
+    speed -= 10;
+    if (speed < 0) speed = 0;
+    document.getElementById("speed").innerText = speed;
+}
+</script>
+
+</body>
+</html>

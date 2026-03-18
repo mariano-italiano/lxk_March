@@ -1,0 +1,9 @@
+# This is a config for application X
+
+# Barnch for developement
+branch=develop
+
+# Version of image
+prodVersion=1.0
+
+

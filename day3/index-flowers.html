@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Kwiaty Świata</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        text-align: center;
+        transition: background 1s;
+    }
+
+    header {
+        background: #ff69b4;
+        color: white;
+        padding: 20px;
+        font-size: 30px;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 20px;
+    }
+
+    .flower {
+        margin: 10px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .flower:hover {
+        transform: scale(1.1);
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background: #ff69b4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>🌸 Kwiaty Świata</header>
+
+<h2>Kliknij kwiat, aby zobaczyć opis</h2>
+
+<div class="gallery">
+    <div class="flower" onclick="showInfo('Róża to symbol miłości 🌹')">Róża</div>
+    <div class="flower" onclick="showInfo('Tulipan pochodzi z Turcji 🌷')">Tulipan</div>
+    <div class="flower" onclick="showInfo('Słonecznik podąża za słońcem 🌻')">Słonecznik</div>
+</div>
+
+<p id="info"></p>
+
+<button onclick="changeBackground()">Zmień kolor tła</button>
+
+<script>
+function showInfo(text) {
+    document.getElementById("info").innerText = text;
+}
+
+function changeBackground() {
+    const colors = ["#ffe4e1", "#fffacd", "#e6e6fa", "#d8bfd8"];
+    const random = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.background = random;
+}
+</script>
+
+</body>
+</html>
